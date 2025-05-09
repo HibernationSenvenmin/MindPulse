@@ -16,13 +16,13 @@ spring:
     # url: jdbc:mysql://localhost:3306/mindpulse
     username: root
     password: admin13640693460$
-    url: 10.7.109.214
+    url: 10.7.109.214:3306
   # Redis 配置
   # todo 需替换配置
   redis:
     database: 1
-    host: 10.16.127.11
-    port: 6379
+    host: sh-crs-3llpswxz.sql.tencentcdb.com
+    port: 24532
     timeout: 5000
     password: a13640693460
 mybatis-plus:
