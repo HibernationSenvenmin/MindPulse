@@ -145,7 +145,7 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.yupi.yudada.MainApplication</mainClass>
-                    <skip>true</skip>
+                    <skip>false</skip>
                 </configuration>
                 <executions>
                     <execution>
