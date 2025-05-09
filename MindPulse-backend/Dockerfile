@@ -1,6 +1,5 @@
 # Docker 镜像构建
-# @author <a href="https://github.com/liyupi">程序员鱼皮</a>
-# @from <a href="https://yupi.icu">编程导航知识星球</a>
+
 FROM maven:3.8.1-jdk-8-slim as builder
 
 #解决容器时期与真实时间相差8小时的问题
@@ -15,4 +14,4 @@ COPY src ./src
 RUN mvn package -DskipTests
 
 # Run the web service on container startup.
-CMD ["java","-jar","/app/target/yudada-backend-0.0.1-SNAPSHOT.jar","--spring.profiles.active=prod"]
+CMD ["java","-jar","/app/target/MindPulse-backend-0.0.1-SNAPSHOT.jar","--spring.profiles.active=prod"]
