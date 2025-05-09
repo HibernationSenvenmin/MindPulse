@@ -13,5 +13,7 @@ COPY src ./src
 # Build a release artifact.
 RUN mvn package -DskipTests
 
+EXPOSE 8101
+
 # Run the web service on container startup.
 CMD ["java","-jar","/app/target/MindPulse-backend-0.0.1-SNAPSHOT.jar","--spring.profiles.active=prod"]
