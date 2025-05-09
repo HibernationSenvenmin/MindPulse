@@ -13,9 +13,10 @@ spring:
   # 数据库配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/mindpulse
+    # url: jdbc:mysql://localhost:3306/mindpulse
     username: root
-    password: 123456789
+    password: admin13640693460$
+    url: sh-cynosdbmysql-grp-75bye1x8.sql.tencentcdb.com:26187
   # Redis 配置
   # todo 需替换配置
   redis:
