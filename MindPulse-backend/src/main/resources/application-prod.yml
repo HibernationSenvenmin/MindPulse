@@ -16,15 +16,15 @@ spring:
     # url: jdbc:mysql://localhost:3306/mindpulse
     username: root
     password: admin13640693460$
-    url: sh-cynosdbmysql-grp-75bye1x8.sql.tencentcdb.com:26187
+    url: 10.7.109.214
   # Redis 配置
   # todo 需替换配置
   redis:
     database: 1
-    host: localhost
+    host: 10.16.127.11
     port: 6379
     timeout: 5000
-    password: 123456
+    password: a13640693460
 mybatis-plus:
   configuration:
     # 生产环境关闭日志
