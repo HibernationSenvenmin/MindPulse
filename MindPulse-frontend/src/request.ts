@@ -4,7 +4,9 @@ import { Message } from "@arco-design/web-vue";
 export const isDev = process.env.NODE_ENG === "development";
 
 const myAxios = axios.create({
-  baseURL: isDev ? "http://localhost:8101" : "https://mindpulse-160715-9-1358342580.sh.run.tcloudbase.com/",
+  baseURL: isDev
+    ? "http://localhost:8101"
+    : "https://mindpulse-160715-9-1358342580.sh.run.tcloudbase.com/",
   timeout: 60000,
   withCredentials: true,
 });
