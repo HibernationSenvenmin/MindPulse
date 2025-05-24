@@ -23,7 +23,14 @@
     </a-col>
     <a-col flex="100px">
       <div v-if="loginUserStore.loginUser.id">
-        {{ loginUserStore.loginUser.userName ?? "无名" }}
+        <a-dropdown trigger="hover" @select="handleSelect">
+          <a-button type="primary" shape="round">{{
+            loginUserStore.loginUser.userName ?? "无名"
+          }}</a-button>
+          <template #content>
+            <a-doption @click="handleLogout">退出登录</a-doption>
+          </template>
+        </a-dropdown>
       </div>
       <div v-else>
         <a-button type="primary" href="/user/login">登录</a-button>
@@ -38,6 +45,8 @@ import { useRouter } from "vue-router";
 import { computed, ref } from "vue";
 import { useLoginUserStore } from "@/store/userStore";
 import checkAccess from "@/access/checkAccess";
+import { Message } from "@arco-design/web-vue";
+import { userLogoutUsingPost } from "@/api/userController";
 
 const loginUserStore = useLoginUserStore();
 
@@ -68,6 +77,37 @@ const doMenuClick = (key: string) => {
   router.push({
     path: key,
   });
+};
+
+// 退出登录
+
+const handleLogout = async () => {
+  const res = await userLogoutUsingPost();
+  if (res.data.code === 0) {
+    // 1. 清除用户存储的登录信息
+    loginUserStore.setLoginUser({
+      id: undefined,
+      userName: undefined,
+    });
+
+    // 2. 清除本地存储的token（如果有）
+    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
+
+    // 3. 跳转到首页
+    await router.push({
+      path: "/",
+      query: {
+        redirect: router.currentRoute.value.path,
+      },
+    });
+
+    // 4. 显示退出成功消息
+    Message.success("已安全退出");
+  } else {
+    Message.error("退出登录失败");
+    console.error("退出登录错误");
+  }
 };
 </script>
 
